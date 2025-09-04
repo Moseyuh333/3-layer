@@ -17,10 +17,11 @@ import jakarta.servlet.http.HttpSession;
 import util.Constant;
 
 @SuppressWarnings("serial")
-@WebServlet(urlPatterns = "/login")
+@WebServlet("/login")
 public class LoginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	// Only handle /login here
 		HttpSession session = req.getSession(false);
 		if (session != null && session.getAttribute("account") != null) {
 			resp.sendRedirect(req.getContextPath() + "/waiting");
@@ -43,6 +44,7 @@ public class LoginController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	// Only handle /login here
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
@@ -50,7 +52,6 @@ public class LoginController extends HttpServlet {
 		String password = req.getParameter("password");
 		boolean isRememberMe = false;
 		String remember = req.getParameter("remember");
-
 		if ("on".equals(remember)) {
 			isRememberMe = true;
 		}

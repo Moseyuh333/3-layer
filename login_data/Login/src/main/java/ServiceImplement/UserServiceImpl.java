@@ -6,19 +6,24 @@ import Service.UserService;
 
 public class UserServiceImpl implements UserService{
 	
-	@Override
-	public User login(String username, String password) {
-		User user = this.get(username);
-		if (user != null && password.equals(user.getPassWord())) {
-		return user;
+		@Override
+		public User login(String username, String password) {
+			User user = this.get(username);
+			if (user != null && password.equals(user.getPassWord())) {
+			return user;
+			}
+			return null;
 		}
-		return null;
-	}
 
-	@Override
-	public User get(String username) {
-		return userDao.get(username);
-	}
-	
-	UserDAOImpl userDao = new UserDAOImpl();
+		@Override
+		public User get(String username) {
+			return userDao.get(username);
+		}
+
+		@Override
+		public void resetPassword(String username, String newPassword) {
+			userDao.resetPassword(username, newPassword);
+		}
+
+		UserDAOImpl userDao = new UserDAOImpl();
 }

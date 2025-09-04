@@ -35,6 +35,17 @@ public class UserDAOImpl implements UserDAO {
 		return user; }
 		} catch (Exception e) {e.printStackTrace(); }
 		return null;
+	}
 
+	@Override
+	public void resetPassword(String username, String newPassword) {
+		String sql = "UPDATE [User] SET password = ? WHERE username = ?";
+		try {
+		conn = new DBConnection().getConnection();
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, newPassword);
+		ps.setString(2, username);
+		ps.executeUpdate();
+		} catch (Exception e) {e.printStackTrace(); }
 	}
 }

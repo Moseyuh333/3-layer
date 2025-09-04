@@ -41,6 +41,9 @@
                 </section>
 
                 <button type="submit" class="btn btn-primary w-100">Login</button>
+                <div class="mt-3 text-center">
+                    <a href="forget-password">Quên mật khẩu?</a>
+                </div>
             </form>
         </div>
     </div>
